@@ -1,0 +1,142 @@
+body {
+  display: block;
+}
+
+div.col-3.search-button {
+  padding-right: 0px;
+  padding-left: 2px;
+}
+div.col-3.current-search-button {
+  padding-left: 0px;
+}
+
+h1,
+h2,
+h3,
+p,
+footer,
+.navbar {
+  color: #757575;
+  display: block;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+footer {
+  margin-top: 10px;
+  font-size: x-small;
+}
+
+div.day {
+  text-align: center;
+}
+
+h2 {
+  font-weight: 100px;
+}
+
+a.temp-f,
+a.temp-c {
+  color: #757575;
+}
+
+a:hover {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a.temp-c:focus,
+a.temp-f:focus {
+  font-weight: bold;
+  text-decoration: none;
+  color: #757575;
+}
+
+a:click .city {
+  font-weight: 800;
+  font-size: 80px;
+}
+
+.container {
+  display: block;
+  border-radius: 3px;
+  border: #ebecf1 1px;
+  border-style: solid;
+  box-shadow: 9px 9px 1px 1px rgba(147, 181, 255, 0.2);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20%;
+  margin-left: 20%;
+  padding: 15px;
+  max-width: 500px;
+}
+
+.country {
+  font-weight: 50;
+  font-size: 30px;
+  color: rgb(117, 117, 117, 0.7);
+}
+
+.day,
+.weekdays {
+  font-family: "Montserrat", sans-serif;
+}
+
+.degrees-num {
+  font-family: "Shadows Into Light Two", cursive;
+  font-size: 90px;
+}
+
+.fas.fa-cloud-sun {
+  color: #bddb92;
+}
+
+.fas.fa-cloud-rain {
+  color: #95e1d3;
+}
+
+.fas.fa-sun {
+  color: #fce38a;
+}
+
+.navbar {
+  background-color: rgb(234, 235, 238, 0.3);
+  border-radius: 0 10px 10px 0;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.row.weekdays {
+  background-color: rgb(234, 235, 238, 0.3);
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding-top: 15px;
+}
+
+.temp-symbol {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  top: -70px;
+}
+
+.temp-today {
+  margin-bottom: 0;
+}
+
+.today {
+  text-align: center;
+  margin: 30px;
+}
+
+.num {
+  font-family: "Shadows Into Light Two", cursive;
+}
+
+.search-button {
+  padding-left: 0;
+}
+.weather-today {
+  font-size: 100px;
+}

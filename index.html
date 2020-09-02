@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>🌡 Weather</title>
+    <link rel="stylesheet" href="src/styles.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&family=Neucha&family=Shadows+Into+Light+Two&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-7-m-3">
+                <nav id="submit-navbar" class="navbar">
+                    <form id="search-form" class="form-inline">
+                        <div class="col-6">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Type city" aria-label="Search"
+                                autofocus="on" id="city-input" />
+                        </div>
+                        <div class="col-3 search-button">
+                            <button id="search-button" type="button" class="btn btn-outline-info">
+                                Search
+                            </button>
+                        </div>
+                        <div class="col-3 current-search-button w-100">
+                            <button id="current-search-button" type="button" class="btn btn-outline-info">
+                                Current
+                            </button>
+                        </div>
+                    </form>
+                </nav>
+            </div>
+        </div>
+
+        <h1 id="city-displayed" class="city">
+        </h1>
+
+        <h2 id="country-displayed" class="country">
+        </h2>
+
+        <div class="today">
+            <div class="row">
+                <div class="col">
+                    <p class="temp-today">
+                        <span id="degrees-today" class="degrees-num"></span>
+                        <span class="temp-symbol"> <a id="celcius" class="temp-c" href="#"> °C </a>|<a id="farenheit"
+                                class="temp-f" href="#"> °F</a></span>
+                        <span today><i class="fas fa-cloud-sun weather-today"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <h3 id="weather-description">
+        </h3>
+
+        <p id="right-now" class="day-time">
+        </p>
+
+        <div class="row weekdays">
+            <div class="col">
+                <div class="day Mon">
+                    Mon
+                    </br class="week-icons">
+                    <i class="fas fa-cloud-sun"></i>
+                    <p class="num">
+                        80°
+                    </p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="day Tues">
+                    Tues
+                    </br class="week-icons">
+                    <i class="fas fa-cloud-rain"></i>
+                    <p class="num">
+                        77°
+                    </p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="day Wed">
+                    Wed
+                    </br class="week-icons">
+                    <i class="fas fa-cloud-rain"></i>
+                    <p class="num">
+                        79°
+                    </p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="day Thurs">
+                    Thurs
+                    </br class="week-icons">
+                    <i class="fas fa-sun"></i>
+                    <p class="num">
+                        83°
+                    </p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="day Fri">
+                    Fri
+                    </br class=week-icons>
+                    <i class="fas fa-sun"></i>
+                    <p class="num">
+                        83°
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+        <footer><a class = "Open-source-url" href="https://github.com/maria-be/mbc-weather-app" target="_blank">Open-source code</a> by Maria Belen Calvo</footer>
+
+    </div>
+
+    </div>
+    </div>
+
+    <script src="src/index.js"></script>
+
+</body>
+
+</html>
