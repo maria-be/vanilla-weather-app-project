@@ -77,7 +77,7 @@ a:click .city {
 }
 
 .container {
-  width: 530px;
+  max-width: 530px;
 }
 
 .day,
