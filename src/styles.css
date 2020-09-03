@@ -56,9 +56,7 @@ a:click .city {
   font-weight: 800;
   font-size: 80px;
 }
-
-.container {
-  display: block;
+div.weather-app {
   border-radius: 3px;
   border: #ebecf1 1px;
   border-style: solid;
@@ -69,6 +67,10 @@ a:click .city {
   margin-left: 20%;
   padding: 15px;
   max-width: 500px;
+}
+
+.container {
+  display: block;
 }
 
 .country {
