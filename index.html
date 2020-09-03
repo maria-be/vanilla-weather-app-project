@@ -21,14 +21,14 @@
 
 <body>
     <div class="container">
-
+        <div class="weather-app">
         <div class="row">
             <div class="col-xs-7-m-3">
                 <nav id="submit-navbar" class="navbar">
                     <form id="search-form" class="form-inline">
                         <div class="col-6">
                             <input class="form-control mr-sm-2" type="text" placeholder="Type city" aria-label="Search"
-                                autofocus="on" id="city-input" />
+                            autofocus="on" id="city-input" />
                         </div>
                         <div class="col-3 search-button">
                             <button id="search-button" type="button" class="btn btn-outline-info">
@@ -44,36 +44,36 @@
                 </nav>
             </div>
         </div>
-
+        
         <h1 id="city-displayed" class="city">
         </h1>
-
+        
         <h2 id="country-displayed" class="country">
         </h2>
-
+        
         <div class="today">
             <div class="row">
                 <div class="col">
                     <p class="temp-today">
                         <span id="degrees-today" class="degrees-num"></span>
                         <span class="temp-symbol"> <a id="celcius" class="temp-c" href="#"> °C </a>|<a id="farenheit"
-                                class="temp-f" href="#"> °F</a></span>
-                        <span today><i class="fas fa-cloud-sun weather-today"></i></span>
-                    </p>
+                            class="temp-f" href="#"> °F</a></span>
+                            <span today><i class="fas fa-cloud-sun weather-today"></i></span>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <h3 id="weather-description">
-        </h3>
-
-        <p id="right-now" class="day-time">
-        </p>
-
-        <div class="row weekdays">
-            <div class="col">
-                <div class="day Mon">
-                    Mon
+            
+            <h3 id="weather-description">
+            </h3>
+            
+            <p id="right-now" class="day-time">
+            </p>
+            
+            <div class="row weekdays">
+                <div class="col">
+                    <div class="day Mon">
+                        Mon
                     </br class="week-icons">
                     <i class="fas fa-cloud-sun"></i>
                     <p class="num">
@@ -81,59 +81,63 @@
                     </p>
                 </div>
             </div>
-
+            
             <div class="col">
                 <div class="day Tues">
                     Tues
-                    </br class="week-icons">
-                    <i class="fas fa-cloud-rain"></i>
-                    <p class="num">
-                        77°
-                    </p>
-                </div>
+                </br class="week-icons">
+                <i class="fas fa-cloud-rain"></i>
+                <p class="num">
+                    77°
+                </p>
             </div>
-
-            <div class="col">
-                <div class="day Wed">
-                    Wed
-                    </br class="week-icons">
-                    <i class="fas fa-cloud-rain"></i>
-                    <p class="num">
-                        79°
-                    </p>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="day Thurs">
-                    Thurs
-                    </br class="week-icons">
-                    <i class="fas fa-sun"></i>
-                    <p class="num">
-                        83°
-                    </p>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="day Fri">
-                    Fri
-                    </br class=week-icons>
-                    <i class="fas fa-sun"></i>
-                    <p class="num">
-                        83°
-                    </p>
-                </div>
-            </div>
-
-
         </div>
-        <footer><a class = "Open-source-url" href="https://github.com/maria-be/vanilla-weather-app-project" target="_blank">Open-source code</a> by Maria Belen Calvo</footer>
+        
+        <div class="col">
+            <div class="day Wed">
+                Wed
+            </br class="week-icons">
+            <i class="fas fa-cloud-rain"></i>
+            <p class="num">
+                79°
+            </p>
+        </div>
+    </div>
+    
+    <div class="col">
+        <div class="day Thurs">
+            Thurs
+        </br class="week-icons">
+        <i class="fas fa-sun"></i>
+        <p class="num">
+            83°
+        </p>
+    </div>
+</div>
 
-    </div>
+<div class="col">
+    <div class="day Fri">
+        Fri
+    </br class=week-icons>
+    <i class="fas fa-sun"></i>
+    <p class="num">
+        83°
+    </p>
+</div>
+</div>
 
-    </div>
-    </div>
+
+</div>
+<footer>
+    <a class = "Open-source-url" href="https://github.com/maria-be/vanilla-weather-app-project" target="_blank">Open-source code</a> 
+    by Maria Belen Calvo
+</footer>
+
+</div>
+
+</div>
+</div>
+</div>
 
     <script src="src/index.js"></script>
 
