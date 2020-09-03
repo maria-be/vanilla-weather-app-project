@@ -31,6 +31,18 @@ div.day {
   text-align: center;
 }
 
+div.weather-app {
+  border-radius: 3px;
+  border: #ebecf1 1px;
+  border-style: solid;
+  box-shadow: 9px 9px 1px 1px rgba(147, 181, 255, 0.2);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 15px;
+  max-width: 500px;
+  display: block;
+}
+
 h2 {
   font-weight: 100px;
 }
@@ -56,22 +68,6 @@ a:click .city {
   font-weight: 800;
   font-size: 80px;
 }
-div.weather-app {
-  border-radius: 3px;
-  border: #ebecf1 1px;
-  border-style: solid;
-  box-shadow: 9px 9px 1px 1px rgba(147, 181, 255, 0.2);
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 20%;
-  margin-left: 20%;
-  padding: 15px;
-  max-width: 500px;
-}
-
-.container {
-  display: block;
-}
 
 .country {
   font-weight: 50;
@@ -86,7 +82,7 @@ div.weather-app {
 
 .degrees-num {
   font-family: "Shadows Into Light Two", cursive;
-  font-size: 90px;
+  font-size: 85px;
 }
 
 .fas.fa-cloud-sun {
