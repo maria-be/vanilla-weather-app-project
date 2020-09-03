@@ -1,5 +1,6 @@
 body {
   display: block;
+  margin: 0;
 }
 
 div.col-3.search-button {
@@ -73,6 +74,12 @@ a:click .city {
   font-weight: 50;
   font-size: 30px;
   color: rgb(117, 117, 117, 0.7);
+}
+
+.container {
+  padding-left: 10%;
+  padding-right: 15%;
+  max-width: 773.75px;
 }
 
 .day,
