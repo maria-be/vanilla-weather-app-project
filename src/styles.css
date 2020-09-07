@@ -140,6 +140,10 @@ a:click .city {
 .search-button {
   padding-left: 0;
 }
+
+.description:first-letter {
+  text-transform: capitalize;
+}
 .weather-today {
   font-size: 100px;
 }

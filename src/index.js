@@ -77,7 +77,7 @@ function changeToFarenheit(event) {
 // VARIABLES | display current date and time
 let todayLine = document.querySelector("#right-now");
 let currentDay = new Date();
-todayLine.innerHTML = updateCurrentDate(currentDay);
+todayLine.innerHTML = `Last update: ${updateCurrentDate(currentDay)}`;
 
 // VARIABLES | search and update to city searched
 
