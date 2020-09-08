@@ -90,16 +90,38 @@ a:click .city {
   font-size: 85px;
 }
 
-.fas.fa-cloud-sun {
-  color: #bddb92;
+.fas.fa-sun,
+.fas.fa-moon {
+  color: #fce38a;
 }
 
-.fas.fa-cloud-rain {
+.fas.fa-cloud-sun,
+.fas.fa-cloud-moon {
+  color: #ffaa71;
+}
+
+.fas.fa-bolt {
+  color: #ffa931;
+}
+
+.fas.fa-cloud {
   color: #95e1d3;
 }
 
-.fas.fa-sun {
-  color: #fce38a;
+.fas.fa-cloud-rain {
+  color: #00b7c2;
+}
+
+.fas.fa-cloud-showers-heavy {
+  color: #40a8c4;
+}
+
+.fas.fa-stream {
+  color: #8d93ab;
+}
+
+.far.fa-snowflake {
+  color: #84a9ac;
 }
 
 .navbar {
@@ -125,7 +147,7 @@ a:click .city {
 }
 
 .temp-today {
-  margin-bottom: 0;
+  margin: 10px 0;
 }
 
 .today {
@@ -135,6 +157,7 @@ a:click .city {
 
 .num {
   font-family: "Shadows Into Light Two", cursive;
+  font-size: 12px;
 }
 
 .search-button {
@@ -146,4 +169,8 @@ a:click .city {
 }
 .weather-today {
   font-size: 100px;
+}
+
+#weather-icon {
+  font-size: 80px;
 }
