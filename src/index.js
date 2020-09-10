@@ -29,12 +29,14 @@ function displayLocationWeather(response) {
   let iconElement = document.querySelector("#weather-icon");
   let iconApi = `${response.data.weather[0].icon}`;
 
+  celsiusTemperature = response.data.main.temp;
+
   document.querySelector("#city-displayed").innerHTML = response.data.name;
   document.querySelector(
     "#country-displayed"
   ).innerHTML = `(${response.data.sys.country})`;
   document.querySelector("#degrees-today").innerHTML = Math.round(
-    response.data.main.temp
+    celsiusTemperature
   );
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
@@ -116,12 +118,14 @@ function getCurrentLocationWeather(event) {
 function changeToCelcius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#degrees-today");
-  temperatureElement.innerHTML = 27;
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 function changeToFarenheit(event) {
   event.preventDefault();
+
+  let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#degrees-today");
-  temperatureElement.innerHTML = 80;
+  temperatureElement.innerHTML = Math.round(farenheitTemperature);
 }
 
 // VARIABLES | display current date and time
@@ -140,8 +144,11 @@ let citySearchButton = document.querySelector("#search-button");
 citySearchButton.addEventListener("click", handleSubmit);
 
 // VARIABLES | change temp units from °C to °F
+let celsiusTemperature = null;
+
 let tempCelcius = document.querySelector("#celcius");
 tempCelcius.addEventListener("click", changeToCelcius);
+
 let tempFarenheit = document.querySelector("#farenheit");
 tempFarenheit.addEventListener("click", changeToFarenheit);
 
