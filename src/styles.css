@@ -28,7 +28,7 @@ footer {
   font-size: x-small;
 }
 
-div.day {
+div.time {
   text-align: center;
 }
 
@@ -80,8 +80,8 @@ a:click .city {
   max-width: 530px;
 }
 
-.day,
-.weekdays {
+.time,
+.forecast-per-three-hours {
   font-family: "Montserrat", sans-serif;
 }
 
@@ -131,7 +131,7 @@ a:click .city {
   margin-bottom: 16px;
 }
 
-.row.weekdays {
+.row.forecast-by-three-hours {
   background-color: rgb(234, 235, 238, 0.3);
   margin-top: 30px;
   margin-bottom: 15px;
@@ -173,4 +173,8 @@ a:click .city {
 
 #weather-icon {
   font-size: 80px;
+}
+
+#forecast-weather-icon {
+  font-size: 15px;
 }

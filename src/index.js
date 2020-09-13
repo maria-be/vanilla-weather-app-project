@@ -7,7 +7,7 @@ function updateCurrentDate(date) {
 
   let minutes = date.getMinutes();
   if (minutes < 10) {
-    minutes = `0${hour}`;
+    minutes = `0${minutes}`;
   }
   let dayIndex = date.getDay();
   let days = [
@@ -40,6 +40,78 @@ function displayLocationWeather(response) {
   );
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
+
+  if (iconApi === "01d") {
+    iconElement.setAttribute("class", `fas fa-sun`);
+  } else {
+    if (iconApi === "02d") {
+      iconElement.setAttribute("class", `fas fa-cloud-sun`);
+    } else {
+      if (iconApi === "01n") {
+        iconElement.setAttribute("class", `fas fa-moon`);
+      } else {
+        if (iconApi === " 02n") {
+          iconElement.setAttribute("class", `fas fa-cloud-moon`);
+        } else {
+          if (iconApi === "11d") {
+            iconElement.setAttribute("class", `fas fa-bolt`);
+          } else {
+            if (
+              iconApi === "03d" ||
+              iconApi === "03n" ||
+              iconApi === "04d" ||
+              iconApi === "04n"
+            ) {
+              iconElement.setAttribute("class", `fas fa-cloud`);
+            } else {
+              if (iconApi === "09d") {
+                iconElement.setAttribute("class", `fas fa-cloud-rain`);
+              } else {
+                if (iconApi === "10d") {
+                  iconElement.setAttribute(
+                    "class",
+                    `fas fa-cloud-showers-heavy`
+                  );
+                } else {
+                  if (iconApi === "50d") {
+                    iconElement.setAttribute("class", `fas fa-stream`);
+                  } else {
+                    if (iconApi === "13d") {
+                      iconElement.setAttribute("class", `far fa-snowflake`);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast-per-three-hours");
+  let forecast = response.data.list[0];
+  let iconElement = document.querySelector("#forecast-weather-icon");
+  let iconApi = `${forecast.weather[0].icon}`;
+  console.log(forecast);
+
+  forecastElement.innerHTML = `
+  <div class="col">
+    <div class="time">
+      12:00
+      </br class="week-icons">
+      <i id="forecast-weather-icon" class="fas fa-stream"></i>
+      <p class="num">
+        <strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
+    forecast.main.temp_min
+  )}°
+      </p>
+    </div>
+  </div>
+ `;
+
   if (iconApi === "01d") {
     iconElement.setAttribute("class", `fas fa-sun`);
   } else {
@@ -93,6 +165,9 @@ function searchCity(city) {
   let apiKey = "2df0d1984775f56e3531a89069fbd3fc";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayLocationWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {
