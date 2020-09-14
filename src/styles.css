@@ -131,7 +131,7 @@ a:click .city {
   margin-bottom: 16px;
 }
 
-.row.forecast-by-three-hours {
+.row.forecast-per-three-hours {
   background-color: rgb(234, 235, 238, 0.3);
   margin-top: 30px;
   margin-bottom: 15px;
@@ -156,7 +156,6 @@ a:click .city {
 }
 
 .num {
-  font-family: "Shadows Into Light Two", cursive;
   font-size: 12px;
 }
 

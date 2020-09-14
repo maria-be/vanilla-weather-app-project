@@ -1,14 +1,6 @@
 // display current date and time
-function updateCurrentDate(date) {
-  let hour = date.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
-  }
-
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
+function updateCurrentDate(timestamp) {
+  let date = new Date(timestamp);
   let dayIndex = date.getDay();
   let days = [
     "Sunday",
@@ -20,9 +12,23 @@ function updateCurrentDate(date) {
     "Saturday",
   ];
   let day = days[dayIndex];
-  return `${day}, ${hour}:${minutes}`;
+  return `${day}, ${formatHours(timestamp)}`;
 }
 
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hour}:${minutes}`;
+}
 // search and update to city searched
 
 function displayLocationWeather(response) {
@@ -41,123 +47,63 @@ function displayLocationWeather(response) {
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
 
+  iconElement.setAttribute("class", getIcon(iconApi));
+}
+
+function getIcon(iconApi) {
+  let classIcon = "fas fa-cloud";
   if (iconApi === "01d") {
-    iconElement.setAttribute("class", `fas fa-sun`);
-  } else {
-    if (iconApi === "02d") {
-      iconElement.setAttribute("class", `fas fa-cloud-sun`);
-    } else {
-      if (iconApi === "01n") {
-        iconElement.setAttribute("class", `fas fa-moon`);
-      } else {
-        if (iconApi === " 02n") {
-          iconElement.setAttribute("class", `fas fa-cloud-moon`);
-        } else {
-          if (iconApi === "11d") {
-            iconElement.setAttribute("class", `fas fa-bolt`);
-          } else {
-            if (
-              iconApi === "03d" ||
-              iconApi === "03n" ||
-              iconApi === "04d" ||
-              iconApi === "04n"
-            ) {
-              iconElement.setAttribute("class", `fas fa-cloud`);
-            } else {
-              if (iconApi === "09d") {
-                iconElement.setAttribute("class", `fas fa-cloud-rain`);
-              } else {
-                if (iconApi === "10d") {
-                  iconElement.setAttribute(
-                    "class",
-                    `fas fa-cloud-showers-heavy`
-                  );
-                } else {
-                  if (iconApi === "50d") {
-                    iconElement.setAttribute("class", `fas fa-stream`);
-                  } else {
-                    if (iconApi === "13d") {
-                      iconElement.setAttribute("class", `far fa-snowflake`);
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    classIcon = `fas fa-sun`;
+  } else if (iconApi === "02d") {
+    classIcon = `fas fa-cloud-sun`;
+  } else if (iconApi === "01n") {
+    classIcon = `fas fa-moon`;
+  } else if (iconApi === " 02n") {
+    classIcon = `fas fa-cloud-moon`;
+  } else if (iconApi === "11d") {
+    classIcon = `fas fa-bolt`;
+  } else if (
+    iconApi === "03d" ||
+    iconApi === "03n" ||
+    iconApi === "04d" ||
+    iconApi === "04n"
+  ) {
+    classIcon = `fas fa-cloud`;
+  } else if (iconApi === "09d") {
+    classIcon = `fas fa-cloud-rain`;
+  } else if (iconApi === "10d") {
+    classIcon = `fas fa-cloud-showers-heavy`;
+  } else if (iconApi === "50d") {
+    classIcon = `fas fa-stream`;
+  } else if (iconApi === "13d") {
+    classIcon = `far fa-snowflake`;
   }
+  return classIcon;
 }
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast-per-three-hours");
-  let forecast = response.data.list[0];
-  let iconElement = document.querySelector("#forecast-weather-icon");
-  let iconApi = `${forecast.weather[0].icon}`;
-  console.log(forecast);
+  forecastElement.innerHTML = null;
+  let forecast = null;
 
-  forecastElement.innerHTML = `
+  for (let index = 0; index < 5; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
   <div class="col">
     <div class="time">
-      12:00
+      ${formatHours(forecast.dt * 1000)}
       </br class="week-icons">
-      <i id="forecast-weather-icon" class="fas fa-stream"></i>
+      <i id="forecast-weather-icon" class="${getIcon(
+        forecast.weather[0].icon
+      )}"></i>
       <p class="num">
         <strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
-    forecast.main.temp_min
-  )}°
+      forecast.main.temp_min
+    )}°
       </p>
     </div>
   </div>
- `;
-
-  if (iconApi === "01d") {
-    iconElement.setAttribute("class", `fas fa-sun`);
-  } else {
-    if (iconApi === "02d") {
-      iconElement.setAttribute("class", `fas fa-cloud-sun`);
-    } else {
-      if (iconApi === "01n") {
-        iconElement.setAttribute("class", `fas fa-moon`);
-      } else {
-        if (iconApi === " 02n") {
-          iconElement.setAttribute("class", `fas fa-cloud-moon`);
-        } else {
-          if (iconApi === "11d") {
-            iconElement.setAttribute("class", `fas fa-bolt`);
-          } else {
-            if (
-              iconApi === "03d" ||
-              iconApi === "03n" ||
-              iconApi === "04d" ||
-              iconApi === "04n"
-            ) {
-              iconElement.setAttribute("class", `fas fa-cloud`);
-            } else {
-              if (iconApi === "09d") {
-                iconElement.setAttribute("class", `fas fa-cloud-rain`);
-              } else {
-                if (iconApi === "10d") {
-                  iconElement.setAttribute(
-                    "class",
-                    `fas fa-cloud-showers-heavy`
-                  );
-                } else {
-                  if (iconApi === "50d") {
-                    iconElement.setAttribute("class", `fas fa-stream`);
-                  } else {
-                    if (iconApi === "13d") {
-                      iconElement.setAttribute("class", `far fa-snowflake`);
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+  `;
   }
 }
 
