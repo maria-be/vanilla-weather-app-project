@@ -97,9 +97,11 @@ function displayForecast(response) {
         forecast.weather[0].icon
       )}"></i>
       <p class="num">
-        <strong>${Math.round(forecast.main.temp_max)}°</strong> | ${Math.round(
+       <span id="num-max"><strong>${Math.round(
+         forecast.main.temp_max
+       )}</span>°</strong> | <span id="num-min">${Math.round(
       forecast.main.temp_min
-    )}°
+    )}</span>°
       </p>
     </div>
   </div>
@@ -143,7 +145,6 @@ function changeToCelcius(event) {
 }
 function changeToFarenheit(event) {
   event.preventDefault();
-
   let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#degrees-today");
   temperatureElement.innerHTML = Math.round(farenheitTemperature);
