@@ -1,4 +1,3 @@
-// display current date and time
 function updateCurrentDate(timestamp) {
   let date = new Date(timestamp);
   let dayIndex = date.getDay();
@@ -29,7 +28,6 @@ function formatHours(timestamp) {
 
   return `${hour}:${minutes}`;
 }
-// search and update to city searched
 
 function displayLocationWeather(response) {
   let iconElement = document.querySelector("#weather-icon");
@@ -46,8 +44,31 @@ function displayLocationWeather(response) {
   );
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
-
   iconElement.setAttribute("class", getIcon(iconApi));
+}
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast-per-three-hours");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 5; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+    <div class="col">
+      <div class="time">
+        ${formatHours(forecast.dt * 1000)}
+        </br class="week-icons">
+        <i id="forecast-weather-icon" class="${getIcon(
+          forecast.weather[0].icon
+        )}"></i>
+        <p class="num">
+         ${Math.round(forecast.main.temp_max)}°
+        </p>
+      </div>
+    </div>
+    `;
+  }
 }
 
 function getIcon(iconApi) {
@@ -81,34 +102,6 @@ function getIcon(iconApi) {
   return classIcon;
 }
 
-function displayForecast(response) {
-  let forecastElement = document.querySelector("#forecast-per-three-hours");
-  forecastElement.innerHTML = null;
-  let forecast = null;
-
-  for (let index = 0; index < 5; index++) {
-    forecast = response.data.list[index];
-    forecastElement.innerHTML += `
-  <div class="col">
-    <div class="time">
-      ${formatHours(forecast.dt * 1000)}
-      </br class="week-icons">
-      <i id="forecast-weather-icon" class="${getIcon(
-        forecast.weather[0].icon
-      )}"></i>
-      <p class="num">
-       <span id="num-max"><strong>${Math.round(
-         forecast.main.temp_max
-       )}</span>°</strong> | <span id="num-min">${Math.round(
-      forecast.main.temp_min
-    )}</span>°
-      </p>
-    </div>
-  </div>
-  `;
-  }
-}
-
 function searchCity(city) {
   let apiKey = "2df0d1984775f56e3531a89069fbd3fc";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -118,18 +111,16 @@ function searchCity(city) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-function handleSubmit(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input").value;
-  searchCity(city);
-}
-
 function searchCurrentLocation(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
+
   let apiKey = "2df0d1984775f56e3531a89069fbd3fc";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayLocationWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function getCurrentLocationWeather(event) {
@@ -137,7 +128,12 @@ function getCurrentLocationWeather(event) {
   navigator.geolocation.getCurrentPosition(searchCurrentLocation);
 }
 
-// change temp units from °C to °F
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-input").value;
+  searchCity(city);
+}
+
 function changeToCelcius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#degrees-today");
@@ -150,22 +146,19 @@ function changeToFarenheit(event) {
   temperatureElement.innerHTML = Math.round(farenheitTemperature);
 }
 
-// VARIABLES | display current date and time
 let todayLine = document.querySelector("#right-now");
 let currentDay = new Date();
 todayLine.innerHTML = `Last updated: ${updateCurrentDate(currentDay)}`;
-
-// VARIABLES | search and update to city searched
 
 let currentLocationButton = document.querySelector("#current-search-button");
 currentLocationButton.addEventListener("click", getCurrentLocationWeather);
 
 let citySearchForm = document.querySelector("#submit-navbar");
 citySearchForm.addEventListener("submit", handleSubmit);
+
 let citySearchButton = document.querySelector("#search-button");
 citySearchButton.addEventListener("click", handleSubmit);
 
-// VARIABLES | change temp units from °C to °F
 let celsiusTemperature = null;
 
 let tempCelcius = document.querySelector("#celcius");
